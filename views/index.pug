@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  if messages.length > 0 
+    ul  
+      each val in messages
+        li#message-container  
+          div#name #{val.user}
+          div#message #{val.text}
+          div#date #{val.added}  
+  else
+    p.warn No messages found  
+  button#add-message-button(onclick='renderFormPage()') Add new message
+
+  script(type="text/javascript").
+    function renderFormPage(){
+      window.location.href = '/new'
+    }
